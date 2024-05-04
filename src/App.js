@@ -12,7 +12,11 @@ export default function App() {
   // const arr = useState(1);
   // Step 1 : Defining the state
   const [step, setStep] = useState(1);
+
+  // let [step, setStep] = useState(1); // don't use let
   // console.log(arr);
+
+  const [test, setTest] = useState({ name: "jonas" });
 
   // const step = 1;
 
@@ -25,6 +29,9 @@ export default function App() {
     // alert("Next");
 
     if (step < 3) setStep(step + 1);
+    // test.name = "Frad"; // never do this
+    // step = step + 1; don't do this
+    setTest({ name: "Frad" });
   }
 
   return (
@@ -37,6 +44,7 @@ export default function App() {
       </div>
       <p className="message">
         Step {step} : {messages[step - 1]}
+        {test.name}
       </p>
 
       <div className="buttons">
