@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const messages = [
   "Learn React ⚛️",
   "Apply for jobs 💼",
@@ -5,22 +7,32 @@ const messages = [
 ];
 
 export default function App() {
-  const step = 1; // later we will update this step, right now we are building the static part
+  // const step = 1; // later we will update this step, right now we are building the static part
+  // const arr = useState(1);
+  // Step 1 : Defining the state
+  const [step, setStep] = useState(1);
+  // console.log(arr);
+
+  // const step = 1;
 
   function handlePrevious() {
-    alert("Previous");
+    // alert("Previous");
+    if (step > 1) setStep(step - 1);
   }
 
   function handleNext() {
-    alert("Next");
+    // alert("Next");
+
+    if (step < 3) setStep(step + 1);
   }
 
   return (
     <div className="steps">
       <div className="numbers">
-        <div className={`${step >= 1 ? "active" : ""}`}>1</div>
-        <div className={`${step >= 2 ? "active" : ""}`}>2</div>
-        <div className={`${step >= 3 ? "active" : ""}`}>3</div>
+        {/* step 2 : we used the state varaible 'step' in our component*/}
+        <div className={step >= 1 ? "active" : ""}>1</div>
+        <div className={step >= 2 ? "active" : ""}>2</div>
+        <div className={step >= 3 ? "active" : ""}>3</div>
       </div>
       <p className="message">
         Step {step} : {messages[step - 1]}
@@ -47,4 +59,3 @@ export default function App() {
     </div>
   );
 }
--
